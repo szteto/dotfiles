@@ -1,0 +1,56 @@
+general {
+	colors = 		true
+	color_good = 		"#F3F4F5"
+	color_bad = 		"#7A8DB8"
+	color_degraded =	"#55858E"
+	interval = 		1
+}
+
+order += "disk /"
+order += "disk /home"
+order += "disk $HOME/.mountpoints/data"
+order += "volume master"
+#order += "wireless _first_"
+order += "cpu_usage"
+order += "battery 0"
+order += "tztime local"
+
+
+disk "/" {
+	format = 	"root :%avail" 
+	prefix_type = 	"custom"
+}
+
+disk "/home" {
+	format = 	"home :%avail"
+	prefix_type = 	"custom"
+}
+
+disk "/home/woat/.mountpoints/data" {
+	format = 	"data :%avail"
+	prefix_type = 	"custom"
+}
+
+cpu_usage {
+	format = 	":%usage"
+}
+
+wireless _first_ {
+	format_up = 	":%ip"
+	format_down = 	"☡ WiFi"
+}
+
+battery 0 {
+        format = 	" :%percentage CHG"
+}
+
+volume master {
+	format = 	":%volume" 
+	device = 	"default"
+	mixer = 	"Master"
+	mixer_idx = 	0
+}
+
+tztime local {
+	format = 	":%H:%M"
+}

@@ -1,0 +1,9 @@
+#/bin/bash
+
+#Recieve user input
+echo "Please enter a URL"
+read url
+
+#wget --no-check-certificate -P ~/Downloads/wget -r -e robots=off --accept jpg,gif,bmp,mp4,mov,mkv,flv,mp3,ogg,flac,cue,pdf,mobi,epub --level=0 $url 
+
+wget -r -E -H -k -nc --no-parent -P $HOME/Downloads/wget -e robots=off --accept jpg,gif,bmp,mp4,mov,mkv,webm,flv,mp3,ogg,flac,cue,pdf,mobi,epub --reject *s.jpg,*t.jpg,*thumb.jpg,*s.png,*t.png,*thumb.png --level=1 $url

@@ -1,0 +1,19 @@
+#/bin/bash
+
+#Recieve user input
+echo "Please enter a URL: "
+read input
+echo "What's the song called? "
+read output
+echo "What's the artist's name? "
+read artist
+echo "what is the album name? "
+read album
+    
+#Do Work
+youtube-dl --audio-quality 0 --no-playlist -o $HOME/Music/Tempfile $input
+ffmpeg -i $HOME/Music/Tempfile.* -q:a 0 -ac 2 -ar 44100 -metadata title="$output" -metadata artist="$artist" -metadata album="$album" -vn $HOME/Music/"$output".mp3
+
+#cleanup
+rm $HOME/Music/Tempfile.*
+
